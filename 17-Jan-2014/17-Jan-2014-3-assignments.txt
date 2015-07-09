@@ -1,0 +1,377 @@
+1.	Write different java programs that utilize the concepts of generics in collections and perform the various
+    operation (i.e. add, remove, add at a specific position, traditional-for-loop, simplified-for-loop and
+    iterator approach)). For maps, test using the key-value pair approach of iteration. Below are the collection
+    types that need to be tested with the generics:
+    Vector, Hashtable, ArrayList, HashSet, TreeSet, LinkedHashSet, LinkedList, HashMap
+
+
+2.	What will the program print when it is compiled and run?
+	import java.util.ArrayList;
+	import java.util.Collection;
+	public class D2DASMT_802
+	{
+		public static void main(String[] args)
+		{
+			int sum = 0;
+			for (int i : makeCollection())
+				sum += i;
+			System.out.println(sum);
+		}
+		static Collection<Integer> makeCollection()
+		{
+			System.out.println("A collection coming up.");
+			Collection<Integer> collection = new ArrayList<Integer>();
+			collection.add(10); collection.add(20); collection.add(30);
+			return collection;
+		}
+	}
+	Select the one correct answer.
+	(a) A collection coming up.
+		60
+	(b) A collection coming up.
+		A collection coming up.
+		A collection coming up.
+		60
+	(c) The program does not compile.
+	(d) None of the above.
+
+
+3.	What will be the result of attempting to compile and run the following program?
+	import java.util.ArrayList;
+	import java.util.Collection;
+	import java.util.HashSet;
+	import java.util.LinkedList;
+	import java.util.TreeSet;
+	public class D2DASMT_803
+	{
+		// Testing HashSet
+		public static void main(String[] args)
+		{
+			HashSet<Integer> set1 = new HashSet<Integer>();
+			addRange(set1, 1);
+			ArrayList<Integer> list1 = new ArrayList<Integer>();
+			addRange(list1, 2);
+			TreeSet<Integer> set2 = new TreeSet<Integer>();
+			addRange(set2, 3);
+			LinkedList<Integer> list2 = new LinkedList<Integer>();
+			addRange(list2, 5);
+			set1.removeAll(list1);
+			list1.addAll(set2);
+			list2.addAll(list1);
+			set1.removeAll(list2);
+			System.out.println(set1);
+		}
+		static void addRange(Collection<Integer> col, int step)
+		{
+			for (int i = step*2; i<=25; i+=step)
+				col.add(i);
+		}
+	}
+	Select the one correct answer.
+	(a) The program will fail to compile, since operations are performed on incompatible collection implementations.
+	(b) The program will fail to compile, since the TreeSet referenced by set2 has not been given a Comparator to use when sorting its elements.
+	(c) The program will compile without error, but will throw an UnsupportedOperationException, when run.
+	(d) The program will compile without error and will print all primes below 25, when run.
+
+
+4.	What will the following program print?
+	import java.util.ArrayList;
+	import java.util.List;
+	import java.util.ListIterator;
+	public class D2DASMT_804
+	{
+		// Iterating a list
+		public static void main(String[] args)
+		{
+			List<String> l = new ArrayList<String>();
+			l.add("A");
+			l.add("B");
+			l.add("C");
+			l.add("D");
+			l.add("E");
+			ListIterator<String> i = l.listIterator();
+			i.next();
+			i.next();
+			i.next();
+			i.next();
+			i.remove();
+			i.previous();
+			i.previous();
+			i.remove();
+			System.out.println(l);
+		}
+	}
+	Select the one correct answer.
+	(a) It will print [A, B, C, D, E].
+	(b) It will print [A, C, E].
+	(c) It will print [B, D, E].
+	(d) It will print [A, B, D].
+	(e) It will print [B, C, E].
+	(f) It will throw a NoSuchElementException.
+
+
+5.	Which sequence of digits will the following program print?
+	import java.util.ArrayList;
+	import java.util.LinkedList;
+	import java.util.List;
+	public class D2DASMT_805
+	{
+		// sublist within a list
+		public static void main(String[] args)
+		{
+			List<String> list = new ArrayList<String>();
+			list.add("1");
+			list.add("2");
+			list.add(1, "3");
+			List<String> list2 = new LinkedList<String>(list);
+			list.addAll(list2);
+			list2 = list.subList(2, 5);
+			list2.clear();
+			System.out.println(list);
+		}
+	}
+	Select the one correct answer.
+	(a) [1, 3, 2]
+	(b) [1, 3, 3, 2]
+	(c) [1, 3, 2, 1, 3, 2]
+	(d) [3, 1, 2]
+	(e) [3, 1, 1, 2]
+	(f) None of the above.
+
+
+6.	What will the program print when it is compiled and run?
+	import static java.lang.System.out;
+	import java.util.Collections;
+	import java.util.NavigableSet;
+	import java.util.TreeSet;
+	public class D2DASMT_806
+	{
+		public static void main(String[] args)
+		{
+			NavigableSet<String> strSetA = new TreeSet<String>();
+			Collections.addAll(strSetA, "set", "shell", "soap");
+			out.print(strSetA.ceiling("shell") + " ");
+			out.print(strSetA.floor("shell") + " ");
+			out.print(strSetA.higher("shell") + " ");
+			out.println(strSetA.lower("shell"));
+		}
+	}
+	Select the one correct answer.
+	(a) shell soap shell set
+	(b) soap set shell shell
+	(c) shell shell soap set
+	(d) set shell shell soap
+
+
+7.	Which statement, when inserted independently at (1), will result in program output that does not include the word shell?
+	import static java.lang.System.out;
+	import java.util.Collections;
+	import java.util.NavigableSet;
+	import java.util.TreeSet;
+	public class D2DASMT_807
+	{
+		public static void main(String[] args)
+		{
+			NavigableSet<String> strSetA = new TreeSet<String>();
+			Collections.addAll(strSetA, "set", "shell", "soap", "swan");
+			// (1) INSERT STATEMENT HERE.
+		}
+	}
+	Select the two correct answers.
+	(a) out.println(strSetA.headSet("soap", true));
+	(b) out.println(strSetA.headSet("soap", false));
+	(c) out.println(strSetA.tailSet("soap", true));
+	(d) out.println(strSetA.tailSet("soap", false));
+	(e) out.println(strSetA.subSet("set", false, "soap", true));
+	(f) out.println(strSetA.subSet("set", true, "soap", false));
+
+
+8.	What will the program print when compiled and run?
+	import java.util.Collection;
+	import java.util.Map;
+	import java.util.NavigableMap;
+	import java.util.TreeMap;
+	public class D2DASMT_808
+	{
+		// Map modifications
+		public static void main(String[] args)
+		{
+			NavigableMap<String, Integer> grades = new TreeMap<String, Integer>();
+			grades.put("A", 5); grades.put("B", 10); grades.put("C", 15);
+			grades.put("D", 20); grades.put("E", 25);
+			System.out.printf("1:%d, ", grades.get(grades.firstKey()));
+			System.out.printf("2:%d, ", sumValues(grades.headMap("D")));
+			System.out.printf("3:%d, ", sumValues(grades.subMap("B", false, "D", true)));
+			grades.subMap(grades.firstKey(), false, grades.lastKey(), false).clear();
+			System.out.printf("4:%d%n", sumValues(grades));
+		}
+		public static <K, M extends Map<K, Integer>> int sumValues(M inputMap)
+		{
+			Collection<Integer> values = inputMap.values();
+			int sumValues= 0;
+			for (int value : values)
+				sumValues += value;
+			return sumValues;
+		}
+	}
+	Select the one correct answer.
+	(a) 1:5, 2:50, 3:35, 4:30
+	(b) 1:5, 2:30, 3:35, 4:30
+	(c) 1:5, 2:30, 3:25, 4:30
+	(d) 1:5, 2:30, 3:35, 4:75
+
+
+9.	Which code, when inserted independently at (1), will result in the following output from the program: {Soap=10, Salts=10}?
+	import java.util.*;
+	public class D2DASMT_809
+	{
+		public static void main(String[] args)
+		{
+			NavigableMap<String, Integer> myMap = new TreeMap<String, Integer>(Collections.reverseOrder());
+			myMap.put("Soap", 10); myMap.put("Shampoo", 5); myMap.put("Salts", 10);
+			// (1) INSERT CODE HERE ...
+			System.out.println(myMap);
+		}
+	}
+	Select the two correct answers.
+	(a) for (Map.Entry<String, Integer> entry : myMap.entrySet())
+			if (entry.getKey().equals("Shampoo"))
+				myMap.remove("Shampoo");
+	(b) for (Iterator<String> iterator = myMap.keySet().iterator(); iterator.hasNext();)
+			if (iterator.next().equals("Shampoo"))
+				iterator.remove();
+	(c) for (Iterator<String> iterator = myMap.keySet().iterator(); iterator.hasNext();)
+			if (iterator.next().equals("Shampoo"))
+			myMap.remove("Shampoo");
+	(d) for (Map.Entry<String, Integer> entry : myMap.entrySet())
+		if (entry.getKey().equals("Shampoo"))
+			myMap.remove(entry);
+	(e) myMap.subMap("Shampoo", true, "Shampoo", true).clear();
+
+
+10.	Which code, when inserted independently at (1), will result in the following output from the program: {1=Odd, 2=Even, 3=Odd}?
+	import java.util.Map;
+	import java.util.TreeMap;
+	public class D2DASMT_810
+	{
+		// StringBuilder map
+		public static void main(String[] args)
+		{
+			Map<Integer, StringBuilder> myMap = new TreeMap<Integer, StringBuilder>();
+			for (Integer key : new int[] {1, 2, 1, 3, 1, 2, 3, 3})
+			{
+				// (1) INSERT CODE HERE ...
+			}
+			System.out.println(myMap);
+		}
+		private static StringBuilder toggle(StringBuilder strBuilder)
+		{
+			String value = "Odd";
+			if (strBuilder.toString().equals(value))
+				value = "Even";
+			return strBuilder.replace(0, strBuilder.length(), value);
+		}
+	}
+	Select the one correct answer.
+	(a) StringBuilder value = myMap.get(key);
+		myMap.put(key, (value == null) ? new StringBuilder("Odd") :
+		StringBuilderMap.toggle(value));
+	(b) StringBuilder value = myMap.get(key);
+		if (value == null)
+			value = new StringBuilder("Odd");
+		else
+			StringBuilderMap.toggle(value);
+		myMap.put(key, value);
+	(c) StringBuilder value = myMap.get(key);
+		if (!myMap.containsKey(key))
+			myMap.put(key, new StringBuilder("Odd"));
+		else
+			StringBuilderMap.toggle(value);
+	(d) All of the above.
+
+
+11.	Which code, when inserted independently at (1), will result in the following output from the program: {1=Odd, 2=Even, 3=Odd}?
+	import java.util.Map;
+	import java.util.TreeMap;
+	public class D2DASMT_811
+	{
+		// String map
+		public static void main(String[] args)
+		{
+			Map<Integer, String> myMap = new TreeMap<Integer, String>();
+			for (Integer key : new int[] {1, 2, 1, 3, 1, 2, 3, 3})
+			{
+				// (1) INSERT CODE HERE ...
+			}
+			System.out.println(myMap);
+		}
+		private static String toggle(String str)
+		{
+			if (str.equals("Odd"))
+				str = str.replace("Odd", "Even");
+			else
+				str = str.replace("Even", "Odd");
+			return str;
+		}
+	}
+	Select the one correct answer.
+	(a) String value = myMap.get(key);
+		myMap.put(key, (value == null) ? "Odd" : StringMap.toggle(value));
+	(b) String value = myMap.get(key);
+		if (value == null)
+			value = "Odd";
+		else
+			StringMap.toggle(value);
+		myMap.put(key, value);
+	(c) String value = myMap.get(key);
+		if (!myMap.containsKey(key))
+			myMap.put(key, "Odd");
+		else
+			StringMap.toggle(value);
+	(d) All of the above.
+
+
+12.	What will the program print when compiled and run?
+	import java.util.Arrays;
+	import java.util.Collections;
+	import java.util.Comparator;
+	import java.util.List;
+	public class D2DASMT_812
+	{
+		public static void main(String[] args)
+		{
+			String[] array = {"slurs", "slush", "slurps", "slurry"};
+			List<String> list1 = Arrays.asList(array);
+			Collections.sort(list1, D2DASMT_812.getComparator());
+			int index1 = Collections.binarySearch(list1, "slurry", D2DASMT_812.getComparator());
+			System.out.println (list1 + ": slurry at " + index1);
+		}
+		public static Comparator<String> getComparator()
+		{
+			return new Comparator<String>()
+			{
+				public int compare(String str1, String str2)
+				{
+					StringBuilder sb1 = new StringBuilder(str1);
+					StringBuilder sb2 = new StringBuilder(str2);
+					return sb2.reverse().toString().compareTo(sb1.reverse().toString());
+				}
+			};
+		}
+	}
+	Select the one correct answer.
+	(a) [slush, slurs, slurry, slurps]: slurry at 2
+	(b) [slush, slurps, slurs, slurry]: slurry at 3
+	(c) [slurry, slurs, slurps, slush]: slurry at 0
+	(d) [slurps, slurry, slurs, slush]: slurry at 1
+
+
+//	D2DASMT_813
+13.	Write a method that takes a string and returns the number of unique characters in the string. It is expected that a string with the same character sequence may be passed several times to the method. Since the counting operation can be time consuming, the method should cache the results so that when the method is given a string previously encountered, it will simply retrieve the stored result. Use collections and maps where appropriate.
+
+
+//	D2DASMT_814
+14.	Write a program that displays a list of characters occurring in a string (i.e., which characters occur where in a string). Read the string from the command line (ignore the spaces and all the parameters have to be converted to a single string before implementing the logic).
+	Here is an example of how to run the program:
+	>java <program name> Hello World
+	{d=[9], o=[4, 6], r=[7], W=[5], H=[0], l=[2, 3, 8], e=[1]}

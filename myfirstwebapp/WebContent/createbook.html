@@ -1,0 +1,51 @@
+<div class='panel panel-default'>
+	<div class='panel-heading'>
+		<h4>Add a Book</h4>
+	</div>
+	<div class='panel-body'>
+		<div class='row'>
+			<div class='col-sm-12'>
+		        <form class='form-horizontal' action='/bookstore/book' method='POST'>
+			        <div class='form-group'>
+				        <label for='title' class='control-label col-sm-3'>Title</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='title' name='title' type='text' placeholder='Book Title'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='isbnCode' class='control-label col-sm-3'>ISBN Code</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='isbnCode' name='isbnCode' type='text' placeholder='ISBN Code of the Book'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='author' class='control-label col-sm-3'>Author</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='author' name='author' type='text' placeholder='Author Name for the Book'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='publishedYear' class='control-label col-sm-3'>Published Year</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='publishedYear' name='publishedYear' type='text' placeholder='Year of Publication'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='price' class='control-label col-sm-3'>Price</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='price' name='price' type='text' placeholder='Price of the Book'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <hr/>
+				        <div class='col-sm-3'></div>
+				        <div>
+					        <input class='btn btn-primary' type='submit' value='Add the Book'/>&nbsp;
+					        <input class='btn btn-default' type='reset' value='Clear'/>
+				        </div>
+			        </div>
+		        </form>
+	        </div>			
+		</div>
+	</div>
+</div>

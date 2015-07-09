@@ -1,0 +1,45 @@
+<div class='panel panel-default'>
+	<div class='panel-heading'>
+		<h4>User Sign Up</h4>
+	</div>
+	<div class='panel-body'>
+		<div class='row'>
+			<div class='col-sm-12'>
+		        <form class='form-horizontal' action='/bookstore/user/signup' method='POST'>
+			        <div class='form-group'>
+				        <label for='email' class='control-label col-sm-3'>Email</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='email' name='email' type='text' placeholder='Email Address'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='password' class='control-label col-sm-3'>Password</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='password' name='password' type='password' placeholder='Password'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='firstName' class='control-label col-sm-3'>First Name</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='firstName' name='firstName' type='text' placeholder='User First Name'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <label for='lastName' class='control-label col-sm-3'>Last Name</label>
+				        <div class='col-sm-9'>
+					        <input class='form-control' id='lastName' name='lastName' type='text' placeholder='User Last Name'/>
+				        </div>
+			        </div>
+			        <div class='form-group'>
+				        <hr/>
+				        <div class='col-sm-3'></div>
+				        <div>
+					        <input class='btn btn-primary' type='submit' value='Sign Up'/>&nbsp;
+					        <input class='btn btn-default' type='reset' value='Clear'/>
+				        </div>
+			        </div>
+		        </form>
+	        </div>			
+		</div>
+	</div>
+</div>

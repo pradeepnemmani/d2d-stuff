@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.d2d.com/schemas/org"
+           xmlns="http://www.d2d.com/schemas/org"
+           elementFormDefault="qualified">
+	<xs:element name="organization">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="name" type="xs:string"/>
+				<xs:element name="address" type="Address"/>
+				<xs:element name="timings">
+					<xs:complexType>
+						<xs:attribute name="start" type="xs:time" use="required"/>
+						<xs:attribute name="end" type="xs:time" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="employees">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="employee" type="Employee" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="Address">
+		<xs:sequence>
+			<xs:element name="street">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="8"/>
+						<xs:maxLength value="32"/>
+						<xs:pattern value="[a-zA-Z0-9 ]+"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="area" type="xs:string"/>
+			<xs:element name="city">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="Hyderabad"/>
+						<xs:enumeration value="Tirupathi"/>
+						<xs:enumeration value="Vijayawada"/>
+						<xs:enumeration value="Nellore"/>
+						<xs:enumeration value="Ongole"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="state" type="xs:string" fixed="AndhraPradesh"/>
+			<xs:element name="country" type="xs:string" fixed="India"/>
+			<xs:element name="zipcode" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Employee">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="gender">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="MALE"/>
+						<xs:enumeration value="FEMALE"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dob" type="xs:dateTime"/>
+			<xs:element name="age">
+				<xs:simpleType>
+					<xs:restriction base="xs:unsignedByte">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="127"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="address" type="Address"/>
+			<xs:element name="work_experience">
+				<xs:complexType>
+					<xs:sequence maxOccurs="unbounded">
+						<xs:element name="company" type="Company"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:any/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="CompanyStats">
+		<xs:attribute name="current" type="xs:boolean" default="false"/>
+		<xs:attribute name="from" type="xs:date" use="required"/>
+		<xs:attribute name="to" type="xs:date"/>
+		<xs:anyAttribute/>
+	</xs:complexType>
+
+	<xs:complexType name="Company">
+		<xs:complexContent>
+			<xs:extension base="CompanyStats">
+				<xs:sequence>
+					<xs:element name="name" type="xs:string"/>
+					<xs:element name="designation" type="xs:string"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="info" type="xs:string"/>
+	<xs:element name="quote" type="xs:string"/>
+</xs:schema>

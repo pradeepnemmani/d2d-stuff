@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<organization xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.d2d.com/schemas/org organization.xsd"
+		xmlns="http://www.d2d.com/schemas/org">
+	<name>Niyasys Technologies</name>
+	<address>
+		<street>CGR International School Road 12</street>
+		<area>Madhapur, Ayyappa Society</area>
+		<city>Hyderabad</city>
+		<state>AndhraPradesh</state>
+		<country>India</country>
+		<zipcode>500084</zipcode>
+	</address>
+	<timings start="08:00:00" end="16:00:00"/>
+	<employees>
+		<employee>
+			<name>Chandra Veerapaneni</name>
+			<gender>MALE</gender>
+			<dob>2014-01-23T16:30:00-05:30</dob>
+			<age>21</age>
+			<address>
+				<street>Kumkum Heights</street>
+				<area>Kondapur</area>
+				<city>Hyderabad</city>
+				<state>AndhraPradesh</state>
+				<country>India</country>
+				<zipcode>500084</zipcode>
+			</address>
+			<work_experience>
+				<company current="true" from="2012-09-19">
+					<name>Niyasys Technologies</name>
+					<designation>Software Developer</designation>
+				</company>
+			</work_experience>
+			<info></info>
+		</employee>
+		<employee>
+			<name>Venkat Baddigam</name>
+			<gender>MALE</gender>
+			<dob>2014-01-23T12:30:00+05:30</dob>
+			<age>24</age>
+			<address>
+				<street>Kumkum Heights</street>
+				<area>Kondapur</area>
+				<city>Hyderabad</city>
+				<state>AndhraPradesh</state>
+				<country>India</country>
+				<zipcode>500084</zipcode>
+			</address>
+			<work_experience>
+				<company current="true" from="2013-06-01">
+					<name>Niyasys Technologies</name>
+					<designation>Software Developer</designation>
+				</company>
+			</work_experience>
+			<quote></quote>
+		</employee>
+	</employees>
+</organization>

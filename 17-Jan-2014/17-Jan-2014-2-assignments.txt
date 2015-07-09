@@ -1,0 +1,474 @@
+1.  Write a Java program to convert the array of arguments passed to a program into a java.util.Vector. Iterate through
+    the elements in a vector and print the output using the traditional for-loop, simplified for-loop and using the
+    iterator.
+    Example of how to run the program:
+    TestVector Hello World! How are you doing today?
+
+    The output should be printed as below:
+    Vector[0] = Hello
+    Vector[1] = World!
+    Vector[2] = How
+    Vector[3] = are
+    Vector[4] = you
+    Vector[5] = doing
+    Vector[6] = today?
+
+
+2. Write a java program to accept key-value pairs as arguments (specified as key=value), parse these arguments and store
+   them in a java.util.Hashtable. Loop through the data within the hashtable and print the output in the below format:
+   Key: <key>, Value: <value>
+
+   Example of how to run the program:
+   TestHashtable "firstName=Elvis" "lastName=Presley" "country=USA" "category=Music"
+
+   This should print the output as below:
+   Key: firstName, Value: Elvis
+   Key: lastName, Value: Presley
+   Key: country, Value: USA
+   Key: category, Value: Music
+
+   To parse a string based on some delimiter, use the below code:
+   StringTokenizer st = new StringTokenizer(<input string>, <delimiter>);
+   st.nextToken() => To get the next token.
+   For the requirement in this program, as the key-value pairs will be specified as <key>=<value>, you can use the below
+   code:
+   StringTokenizer st = new StringTokenizer( args[i], "=");
+   String key = st.nextToken();
+   String value = st.nextToken();
+
+
+3. What is the output of the below program when compiled and executed?
+    public class TestFinallyClause
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                    break;                                                              // 1.
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                    break;                                                              // 2.
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                    break;                                                              // 3.
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            System.out.println( "Returning from throwAnException()" );
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause tfc = new TestFinallyClause();
+
+            try
+            {
+                tfc.throwAnException( 4 );                                              // 4.
+                tfc.throwAnException( 1 );
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+        }
+    }
+
+    (a) Prints a compilator error at line identified by "4." indicating that 4 is not a valid value
+    (b) Prints the below output:
+        No exceptions occurred.
+        File not found.
+        File already exists.
+        Directory not empty.
+    (c) Compilation errors on lines identified by 1., 2. and 3.
+    (d) Prints the below output:
+        No exceptions occurred.
+        File not found.
+        File already exists.
+        Directory not empty.
+        Returning from throwAnException()
+
+4. What is the output of the below program when compiled and executed?
+    // Filename: TestFinallyClause2.java
+    public class TestFinallyClause2
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            System.out.println( "Returning from throwAnException()" );
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause2 tfc = new TestFinallyClause2();
+
+            try
+            {
+                tfc.throwAnException( 4 );
+                tfc.throwAnException( 1 );
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+        }
+    }
+
+    (a) Prints a compilator error at line identified by "4." indicating that 4 is not a valid value
+    (b) Prints the below output:
+        No exceptions occurred.
+        File not found.
+        File already exists.
+        Directory not empty.
+    (c) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        File not found.
+
+5. What is the output of the below program when compiled and executed.
+    // Filename: TestFinallyClause3.java
+    public class TestFinallyClause3
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            finally
+            {
+                System.out.println( "Returning from throwAnException()" );
+            }
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause3 tfc = new TestFinallyClause3();
+
+            try
+            {
+                tfc.throwAnException( 4 );
+                tfc.throwAnException( 1 );
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+        }
+    }
+    (a) Compilation error in the throwAnException(..) method
+    (b) Prints the below output:
+        Returning from throwAnException()
+        No exceptions occurred.
+        File not found.
+        File already exists.
+        Directory not empty.
+    (c) Prints the below output:
+        Returning from throwAnException()
+        No exceptions occurred.
+        File not found.
+
+6. What is the output of the below program when compiled and executed.
+    // Filename: TestFinallyClause4.java
+    public class TestFinallyClause4
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            System.out.println( "Returning from throwAnException()" );
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause4 tfc = new TestFinallyClause4();
+
+            try
+            {
+                tfc.throwAnException( 4 );
+                tfc.throwAnException( 1 );
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            finally
+            {
+                System.out.println( "Returning from main." );
+            }
+        }
+    }
+    (a) Compilation error in the throwAnException(..) method
+    (b) Compilation error in the main(..) method
+    (c) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        File not found.
+        Returning from main.
+
+
+7. What is the output of the below program when compiled and executed.
+    // Filename: TestFinallyClause5.java
+    public class TestFinallyClause5
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            System.out.println( "Returning from throwAnException()" );
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause5 tfc = new TestFinallyClause5();
+
+            try
+            {
+                tfc.throwAnException( 4 );
+                try
+                {
+                    tfc.throwAnException( 1 );
+                }
+                catch ( FileNotFoundException e )
+                {
+                    tfc.throwAnException( 2 );
+                }
+                finally
+                {
+                    System.out.println( "finally in inner-try." );
+                }
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            finally
+            {
+                System.out.println( "Returning from main." );
+            }
+        }
+    }
+    (a) Compilation error in the main(..) method
+    (b) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        File not found.
+        Returning from main.
+    (c) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        finally in inner-try.
+        File not found.
+        Returning from main.
+    (d) No exceptions occurred.
+        Returning from throwAnException()
+        finally in inner-try.
+        File already exists.
+        Returning from main.
+
+8. What is the output of the below program when compiled and executed?
+    // Filename: MyRuntimeException.java
+    public class MyRuntimeException extends RuntimeException
+    {
+        public MyRuntimeException()
+        {
+        }
+
+        public MyRuntimeException( String message )
+        {
+            super( message );
+        }
+
+        public MyRuntimeException( Throwable cause )
+        {
+            super( cause );
+        }
+
+        public MyRuntimeException( String message, Throwable cause )
+        {
+            super( message, cause );
+        }
+
+        public MyRuntimeException( String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace )
+        {
+            super( message, cause, enableSuppression, writableStackTrace );
+        }
+    }
+    // Filename: TestFinallyClause6.java
+    public class TestFinallyClause6
+    {
+        public void throwAnException( int throwExceptionType ) throws FileNotFoundException, FileAlreadyExistsException,
+                DirectoryNotEmptyException
+        {
+            switch ( throwExceptionType )
+            {
+                case 1:
+                    throw new FileNotFoundException( "File not found." );
+                case 2:
+                    throw new FileAlreadyExistsException( "File already exists." );
+                case 3:
+                    throw new DirectoryNotEmptyException( "Directory not empty." );
+                case 6:
+                    throw new MyRuntimeException("My Runtime Exception");
+                default:
+                    System.out.println( "No exceptions occurred." );
+            }
+            System.out.println( "Returning from throwAnException()" );
+        }
+
+        public static void main( String[] args )
+        {
+            TestFinallyClause6 tfc = new TestFinallyClause6();
+
+            try
+            {
+                tfc.throwAnException( 4 );
+                try
+                {
+                    tfc.throwAnException( 1 );
+                }
+                catch ( FileNotFoundException e )
+                {
+                    tfc.throwAnException( 6 );
+                }
+                finally
+                {
+                    System.out.println( "finally in inner-try." );
+                }
+                tfc.throwAnException( 2 );
+                tfc.throwAnException( 3 );
+            }
+            catch ( FileAlreadyExistsException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( DirectoryNotEmptyException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            catch ( FileNotFoundException e )
+            {
+                System.out.println( e.getMessage() );
+            }
+            finally
+            {
+                System.out.println( "Returning from main." );
+            }
+        }
+    }
+    (a) Compilation error in the throwAnException(..) method as it does not throw the "MyRuntimeException"
+    (b) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        File not found.
+        Returning from main.
+    (c) Prints the below output:
+        No exceptions occurred.
+        Returning from throwAnException()
+        finally in inner-try.
+        File not found.
+        Returning from main.
+    (d) No exceptions occurred.
+        Returning from throwAnException()
+        finally in inner-try.
+        Returning from main.
+    (e) No exceptions occurred.
+        Returning from throwAnException()
+        finally in inner-try.
+        Returning from main.
+        Stack trace is printed for the MyRuntimeException by the JVM
+
+9. Replace the "MyRuntimeException" code in the above program to subclass from Exception. Compile and execute the program.
+   Will the code compile? If yes, why? If not, why?
+

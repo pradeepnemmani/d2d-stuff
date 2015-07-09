@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--<context:annotation-config />-->
+    <!--<context:component-scan base-package="com.d2d.spring"/>-->
+
+	<bean id="personBean" class="com.d2d.model.Person">
+		<property name="firstName" value="Chandra"/>
+		<property name="lastName" value="Veerapaneni"/>
+		<property name="age" value="12"/>
+	</bean>
+
+	<bean id="emp1Bean" class="com.d2d.model.Person">
+		<property name="firstName" value="Venkat"/>
+		<property name="lastName" value="Baddigam"/>
+		<property name="age" value="15"/>
+	</bean>
+
+	<bean id="emp2Bean" class="com.d2d.model.Person">
+		<property name="firstName" value="Grandhi"/>
+		<property name="lastName" value="Gupta"/>
+		<property name="age" value="15"/>
+	</bean>
+
+	<bean id="orgBean" class="com.d2d.model.Organization">
+		<constructor-arg name="ceo" ref="personBean"/>
+		<property name="name" value="Chandra Technologies"/>
+		<property name="employees" ref="employeesList"/>
+	</bean>
+
+	<util:list id="employeesList">
+		<ref bean="emp1Bean"/>
+		<ref bean="emp2Bean"/>
+	</util:list>
+
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="sample.css"?>
+<organization>
+	<name>dots2drops</name>
+	<address>CGR International School, Madhapur, Hyderabad</address>
+	<streams>
+		<stream>
+			<name>Webscience</name>
+			<module>
+				<name>Java</name>
+			</module>
+			<module>
+				<name>Advanced Java</name>
+			</module>
+		</stream>
+	</streams>
+	<batches>
+		<batch student_count="">
+			<name>IJ13A</name>
+		</batch>
+		<batch student_count="7">
+			<name>IJ13B</name>
+		</batch>
+		<batch student_count="25">
+			<name>ISJ13A</name>
+		</batch>
+	</batches>
+</organization>

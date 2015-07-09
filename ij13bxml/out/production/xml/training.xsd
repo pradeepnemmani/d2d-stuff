@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		targetNamespace="http://www.d2d.com/schemas/training"
+		xmlns="http://www.d2d.com/schemas/training"
+		xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+		jxb:version="2.0"
+		elementFormDefault="qualified">
+	<xs:element name="institute" type="Institute"/>
+
+	<xs:complexType name="Institute">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="courses" type="Courses"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Course">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="code">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1301"/>
+						<xs:maxInclusive value="1399"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="begin_date" type="xs:dateTime"/>
+			<xs:element name="course_type" type="EnumCourseType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Courses">
+		<xs:sequence maxOccurs="unbounded">
+			<xs:element name="course" type="Course"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="EnumCourseType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Foundation">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:typesafeEnumMember name="Foundation"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FastTrack">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:typesafeEnumMember name="FastTrack"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="Intensive">
+				<xs:annotation>
+					<xs:appinfo>
+						<jxb:typesafeEnumMember name="Intensive"/>
+					</xs:appinfo>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
