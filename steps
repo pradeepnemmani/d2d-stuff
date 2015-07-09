@@ -1,0 +1,51 @@
+						writing Code-First approach
+
+1) SEI (Interface)
+2)Implementation for the SEI
+3) Annotations [JAX-WS]
+	@WebService
+	@WebMethod
+	@WebParam
+	@WebResult
+	@soap bininding - > style -document/rpc
+		->parameters - BARE / WRAPPED
+		->use - ENCODED /LITERAL	
+
+4)cxf-servlet
+	jaxws : endpoint
+		   |
+		   ->id
+		   ->implementor
+		   ->address
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+						Writing contract-first approach
+
+wsdl:1.1
+-------------------
+<wsdl: definations>
+	<types> ->schema
+	<message> - consists of parts or any num of types ->it refers to the datatypes
+			The datatypes are declared in the <types>
+	<porttype>(SEI)->operations   -->mesSages -->parts -->types
+		     	   |
+			     ->Input
+			     ->Output
+				1.one-way
+				2.request-responce
+				3.Notification
+				4.Solicit-Responce
+
+	<binding> ->It is always at the port level.(SEI)	
+		|
+		->Operations...
+	<service> ->Final Published End Point
+</wsdl:definations>
+----------------------
+::::::NOTE::::::::
+wsdl-2.0
+In the 2.0 <definations> are replaced with the <description>
+	   <porttype> is replaced with the <interface>
+------------------------

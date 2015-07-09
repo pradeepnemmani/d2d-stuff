@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+           targetNamespace="http://www.school.com/schemas"
+           elementFormDefault="qualified"
+           xmlns="http://www.school.com/schemas"
+           jxb:version="2.0">
+    <xs:element name="school">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="school_name" type="xs:string"/>
+                <!--<xs:element name="board_members" type="BoardMembers"/>-->
+                <!--<xs:element name="student_members" type="Student"/>-->
+                <xs:element name="members" type="Members"/>
+                <xs:element name="board_members" type="BoardMembers"/>
+                <xs:element name="address" type="Address"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Member" abstract="true">
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="id">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="10"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BoardMember">
+        <xs:complexContent>
+            <xs:extension base="Member">
+                <xs:attribute name="from" type="xs:date"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Student">
+        <xs:complexContent>
+            <xs:extension base="Member">
+                <xs:sequence >
+                <xs:element name="class" type="xs:int"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="Members">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="member" type="Student"/>
+
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="BoardMembers">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="board_member" type="BoardMember"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Address">
+        <xs:all>
+            <xs:element name="street" type="xs:string"/>
+            <xs:element name="landmark" type="xs:string"/>
+            <xs:element name="area" type="xs:string"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="state" type="xs:string"/>
+            <xs:element name="zipcode" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+</xs:schema>
